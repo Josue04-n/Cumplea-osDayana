@@ -1,0 +1,401 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.birthday-container {
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: zoomIn 0.7s ease-out forwards;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    animation-delay: 1s;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #f3e5f5;
+    text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+#message2 {
+    animation-delay: 3s;
+}
+
+#message3 {
+    animation-delay: 5s;
+}
+
+/* Efecto de zoom con rebote */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Globos */
+.balloons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.balloon {
+    width: 80px;
+    height: 120px;
+    background-color: #d87093;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    animation: float 5s ease-in-out infinite;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform-origin: bottom center;
+}
+
+.balloon-1 {
+    background-color: #a020f0;
+    animation-delay: 0.2s;
+}
+
+.balloon-2 {
+    background-color: #ba55d3;
+    animation-delay: 0.4s;
+}
+
+.balloon-3 {
+    background-color: #dda0dd;
+    animation-delay: 0.6s;
+}
+
+.balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background-color: #fff;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+/* Animación de confeti */
+.confetti-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #a020f0;
+    opacity: 0.8;
+    animation: confetti-explosion 2s ease-out infinite;
+    top: -10px;
+}
+
+.confetti:nth-child(2) {
+    left: 20%;
+    animation-delay: 0.3s;
+    background-color: #ba55d3;
+}
+
+.confetti:nth-child(3) {
+    left: 40%;
+    animation-delay: 0.5s;
+    background-color: #dda0dd;
+}
+
+.confetti:nth-child(4) {
+    left: 60%;
+    animation-delay: 0.7s;
+    background-color: #a020f0;
+}
+
+.confetti:nth-child(5) {
+    left: 80%;
+    animation-delay: 1s;
+    background-color: #d87093;
+}
+
+.confetti:nth-child(6) {
+    left: 90%;
+    animation-delay: 1.2s;
+    background-color: #ba55d3;
+}
+
+@keyframes confetti-explosion {
+    0% {
+        opacity: 1;
+        transform: scale(0) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) translateY(20vh);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.5) translateY(100vh);
+    }
+}
+
+/* Brillos mágicos */
+.sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent, #ffffff33, transparent);
+    background-size: 10px 10px;
+    z-index: 0;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0.4;
+        background-size: 10px 10px;
+    }
+    50% {
+        opacity: 1;
+        background-size: 15px 15px;
+    }
+    100% {
+        opacity: 0.4;
+        background-size: 10px 10px;
+    }
+}
+
+/* Sobre decorado */
+/* Sobre decorado */
+.envelope {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Aumentamos el ancho */
+    height: 150px; /* Aumentamos la altura */
+    background-color: #6a11cb;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.envelope .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a020f0;
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0% 100%);
+    transition: transform 0.6s ease-in-out;
+}
+
+.envelope .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6a11cb;
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.message-hidden {
+    position: absolute;
+    top: 150%; /* Aumentamos el top para que no se corte */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 15px; /* Más padding para mayor legibilidad */
+    border-radius: 8px;
+    color: #6a11cb;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: top 0.6s ease-in-out;
+    opacity: 0;
+    width: 200px; /* Ajustamos el ancho para que se vea mejor */
+    height: 150px; /* Limitamos la altura para que sea desplazable */
+    overflow-y: auto; /* Habilitamos el scroll vertical */
+    text-align: center; /* Centramos el texto */
+    max-height: 200px; /* Altura máxima para cuando el mensaje es largo */
+}
+
+/* Estilos del scroll */
+.message-hidden::-webkit-scrollbar {
+    width: 8px;
+}
+
+.message-hidden::-webkit-scrollbar-thumb {
+    background-color: #a020f0; 
+    border-radius: 10px;
+}
+
+.open .top {
+    transform: rotateX(180deg);
+}
+
+.open .message-hidden {
+    top: 10%; /* Aumentamos el espacio visible */
+    opacity: 1;
+}
+/* Sobre decorado */
+.envelope {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Aumentamos el ancho */
+    height: 150px; /* Aumentamos la altura */
+    background-color: #6a11cb;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.envelope .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a020f0;
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0% 100%);
+    transition: transform 0.6s ease-in-out;
+}
+
+.envelope .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6a11cb;
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.message-hidden {
+    position: absolute;
+    top: 150%; /* Aumentamos el top para que no se corte */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 15px; /* Más padding para mayor legibilidad */
+    border-radius: 8px;
+    color: #6a11cb;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: top 0.6s ease-in-out;
+    opacity: 0;
+    width: 200px; /* Ajustamos el ancho para que se vea mejor */
+    height: 150px; /* Limitamos la altura para que sea desplazable */
+    overflow-y: auto; /* Habilitamos el scroll vertical */
+    text-align: center; /* Centramos el texto */
+    max-height: 200px; /* Altura máxima para cuando el mensaje es largo */
+}
+
+/* Estilos del scroll */
+.message-hidden::-webkit-scrollbar {
+    width: 8px;
+}
+
+.message-hidden::-webkit-scrollbar-thumb {
+    background-color: #a020f0; 
+    border-radius: 10px;
+}
+
+.open .top {
+    transform: rotateX(180deg);
+}
+
+.open .message-hidden {
+    top: 10%; /* Aumentamos el espacio visible */
+    opacity: 1;
+}
+/* Estilos para los números "19" */
+.numbers-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para que no interfieran con los clics */
+}
+
+.number-19 {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff; /* Blanco por defecto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: floatNumber 10s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+/* Alterna entre colores que contrasten con el morado */
+.number-19:nth-child(2n) {
+    color: #ffff00; /* Amarillo */
+}
+
+.number-19:nth-child(3n) {
+    color: #00ffff; /* Cian */
+}
+
+/* Animación para los números */
+@keyframes floatNumber {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
